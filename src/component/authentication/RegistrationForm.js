@@ -31,7 +31,7 @@ export const RegistrationForm = () => {
         const registrationInfo = await axios.post("https://arcane-falls-63724.herokuapp.com/register", formValue);
         console.log("Registered: ", registrationInfo);
         setFormValue({
-            ...formValue,
+            ...formValue,  
             firstName: "",
             lastName: "",
             email: "",
