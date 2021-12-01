@@ -28,6 +28,7 @@ export const RegistrationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('test reg form');
         const registrationInfo = await axios.post("https://arcane-falls-63724.herokuapp.com/register", formValue);
         console.log("Registered: ", registrationInfo);
         setFormValue({
