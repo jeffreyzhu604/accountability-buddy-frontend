@@ -19,7 +19,7 @@ import axios from 'axios';
 
 /*
     NOTE: Express server hosted on: https://arcane-falls-63724.herokuapp.com/. For local development,
-    please use localhost on port 4000.
+    please use localhost on port 4000 (http://localhost:4000).
 
     NOTE: This file contains all the action creators used to change the state of the Redux store.
 */
@@ -39,7 +39,7 @@ export const setLoading = () => {
 export const login = credentials => async dispatch => {
     try {
         setLoading();
-        const loginInfo = await axios.post("http://localhost:4000/login", credentials);
+        const loginInfo = await axios.post("https://arcane-falls-63724.herokuapp.com/login", credentials);
         dispatch({
             type: LOG_IN,
             payload: {
@@ -80,7 +80,7 @@ export const updateFriends = (payload) => {
  */
 export const getUsers = () => async dispatch => {
     try {
-        const users = await axios.get("http://localhost:4000/users/all");
+        const users = await axios.get("https://arcane-falls-63724.herokuapp.com/users/all");
         dispatch({
             type: GET_USERS,
             payload: users.data
@@ -98,7 +98,7 @@ export const getUsers = () => async dispatch => {
  */
 export const addUser = friends => async dispatch => {
     try {
-        const updates = await axios.put("http://localhost:4000/add-friend", {
+        const updates = await axios.put("https://arcane-falls-63724.herokuapp.com/add-friend", {
             activeUser: friends.activeUser,
             _id: friends._id
         });
@@ -134,7 +134,7 @@ export const addUser = friends => async dispatch => {
  */
 export const removeUser = friends => async dispatch => {
     try {
-        const updates = await axios.put("http://localhost:4000/remove-friend", {
+        const updates = await axios.put("https://arcane-falls-63724.herokuapp.com/remove-friend", {
             activeUser: friends.activeUser,
             _id: friends._id
         });
@@ -170,7 +170,7 @@ export const removeUser = friends => async dispatch => {
 export const addAgreement = agreement => async dispatch => {
     try {
         setLoading();
-        const agreementData = await axios.post("http://localhost:4000/create-agreement", agreement);
+        const agreementData = await axios.post("https://arcane-falls-63724.herokuapp.com/create-agreement", agreement);
         dispatch({
             type: CREATE_AGREEMENT,
             payload: agreementData.data
@@ -198,7 +198,7 @@ export const resetActiveAgreement = () => {
 export const getAgreement = () => async dispatch => {
     try {
         setLoading();
-        const agreements = await axios.get("http://localhost:4000/agreement");
+        const agreements = await axios.get("https://arcane-falls-63724.herokuapp.com/agreement");
         dispatch({
             type: GET_AGREEMENT,
             payload: agreements.data
