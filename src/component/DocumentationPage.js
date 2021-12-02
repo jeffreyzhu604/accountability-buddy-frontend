@@ -31,6 +31,11 @@ export const DocumentationPage = () => {
             <code>npm run devstart</code>
 
             <h3>Voila! Hope you enjoy this!</h3>
+
+            <h1>Usage:</h1>
+
+            <p>Users can register (Password must be 8 characters) and login to the site</p>
+            <p>Users can create agreements with other users (must be a friend and use the username)</p>
         </div>
     );
 };
