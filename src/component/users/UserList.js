@@ -18,7 +18,7 @@ export const UserList = ({ users }) => {
         
         for (let i = 0; i < dateCutoffLength; i += 1) {
             result = result += date.charAt(i);
-        }
+        }   
         
         const year = result.substring(0, 4);
         const month = result.substring(5, 7);

@@ -19,7 +19,7 @@ export const User = ({ id, username, profileMessage, dateJoined, friends, active
             _id: id
         }));
     }
-
+    
     const removeFriend = () => {
         dispatch(removeUser({
             activeUser: activeUser,
