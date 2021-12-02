@@ -21,6 +21,7 @@ export const Home = () => {
 
   return (
     <div className="home">
+      {/* Search for users */}
       <SearchBar />
       <h1>Members:</h1>
       <UserList users={users}/>

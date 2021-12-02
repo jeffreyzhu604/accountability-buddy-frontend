@@ -31,8 +31,8 @@ export const User = ({ id, username, profileMessage, dateJoined, friends, active
     const renderButtons = () => {
         // Checks if a user is logged in.
         if (loggedIn) {
-            // If a users friends list include the active user and friends list belongs to active user, display no button.
-            if (friends.includes(activeUser._id) && id === activeUser._id) {
+            // If id is the same as the active user, display no button.
+            if (id === activeUser._id) {
                 return <div></div>
             // If friends list contains active user, display remove button
             } else if (friends.includes(activeUser._id)) {

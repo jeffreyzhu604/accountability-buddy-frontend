@@ -21,10 +21,12 @@ export const AgreementPage = () => {
 
     return (
         <div className="home">
+            {/* Search for agreements: NOT IMPLEMENTED*/}
             <SearchBar />
             <h1>Agreements:</h1>
             <Link className="button-nav buttons" to="/create-agreement">Create Agreement</Link>
             <div className="card">
+                {console.log(agreements)}
                 {agreements.map(agreement => {
                     return (
                         <div className="user-list-description">

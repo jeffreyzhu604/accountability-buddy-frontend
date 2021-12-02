@@ -39,7 +39,6 @@ export const AgreementForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isFriend(formValue.friend)) {
-            console.log(formValue)
             dispatch(addAgreement({
                 endDate: formValue.endDate,
                 amount: formValue.amount,
@@ -57,7 +56,6 @@ export const AgreementForm = () => {
             });
             // Redirect to agreements page after submitting the agreement
             if (!loading) {
-                console.log('not loading');
                 history.push("/agreement");
             }
         }
