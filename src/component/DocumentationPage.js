@@ -36,6 +36,7 @@ export const DocumentationPage = () => {
 
             <p>Users can register (Password must be 8 characters) and login to the site</p>
             <p>Users can search for other users in the search bar in the home page</p>
+            <p>After a search, if you want to display all the users again, clear the search bar and hit enter</p>
             <p>Users can create agreements with other users (must be a friend and use the username)</p>
             <p>Delete and edit for agreements currently doesn't work</p>
             <p>Searching for agreements in currently doesn't work</p>
