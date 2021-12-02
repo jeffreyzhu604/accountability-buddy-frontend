@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addUser, removeUser } from '../../actions';
@@ -7,18 +7,11 @@ export const User = ({ id, username, profileMessage, dateJoined, friends, active
 
     const dispatch = useDispatch();
 
+    // Get the status if a user is currently logged in from the Redux store.
+    // Component re-renders if the state changes.
     const { loggedIn } = useSelector(state => ({
         loggedIn: state.loginReducer.loggedIn   
     }));
-
-    const [localStateUser, setLocalStateUser] = useState({});
-
-    useEffect(() => {
-        const user = localStorage.getItem('activeUser');
-        if (user) {
-            setLocalStateUser(JSON.parse(user));
-        }
-    }, [])
 
     const addFriend = () => {
         dispatch(addUser({
@@ -34,16 +27,22 @@ export const User = ({ id, username, profileMessage, dateJoined, friends, active
         }));
     }
 
+    // Conditionally render buttons on the user list.
     const renderButtons = () => {
+        // Checks if a user is logged in.
         if (loggedIn) {
+            // If a users friends list include the active user and friends list belongs to active user, display no button.
             if (friends.includes(activeUser._id) && id === activeUser._id) {
                 return <div></div>
+            // If friends list contains active user, display remove button
             } else if (friends.includes(activeUser._id)) {
                 return <button onClick={() => removeFriend()} className="button-nav buttons">Remove friend</button>;
+            // If friends list doesn't contain active user, display add button                
             } else {
                 return <button onClick={() => addFriend()} className="button-nav buttons">Add friend</button>;
             }
         } 
+        // No user is logged in, display no button
         return <div></div>
     }
 

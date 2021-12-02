@@ -10,8 +10,11 @@ import { login } from '../../actions/index';
 export const LoginForm = () => {
     
     const history = useHistory();
+
     const dispatch = useDispatch();
     
+    // Get the status if a user is currently logged in to the site from the Redux store.
+    // Component re-renders if the state changes.
     const {loggedIn} = useSelector(state => ({
         loggedIn: state.loginReducer.loggedIn
     }));
@@ -21,6 +24,7 @@ export const LoginForm = () => {
         password: ""
     });
 
+    // Update local state of each form element
     const handleChange = (e) => {
         setFormValue({
             ...formValue,
@@ -38,6 +42,7 @@ export const LoginForm = () => {
             email: "",
             password: ""
         });
+        // After user has logged in, redirect to home page
         history.push("/");
     }
 

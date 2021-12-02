@@ -5,26 +5,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUsers } from '../actions';
 
 export const Home = () => {
+
   const dispatch = useDispatch();
 
+  // Get list of current users from Redux store.
+  // Component re-renders if any of these states change.
   const { users } = useSelector(state => ({
     users: state.userReducer.users
   }));
 
-    // const [activeUser, setActiveUser] = useState({});
-
-    // useEffect(() => {
-    //   const user = users.filter(user => {
-    //       console.log('user: ', user);
-    //       return user.isAuthenticated === true && user.isAuthorized === true
-    //   });
-    //   console.log(`${user[0]}`);
-    //   setActiveUser(user[0]);
-    // }, []);
-
-    useEffect(() => {
-      dispatch(getUsers());
-    }, []);
+  // Load initial users
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
 
   return (
     <div className="home">

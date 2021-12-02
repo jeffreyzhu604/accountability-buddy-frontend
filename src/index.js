@@ -9,8 +9,13 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers/index';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+// Creating Redux store to maintain global state for the application
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
+/*  
+    NOTE: Run command: npm start
+    NOTE: Client is also hosted at: https://loving-mclean-2c559f.netlify.app/
+*/
 ReactDOM.render(
   <Provider store={store}>
     <Router>

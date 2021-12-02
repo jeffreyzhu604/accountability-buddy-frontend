@@ -6,27 +6,29 @@ export const DocumentationPage = () => {
             <h2>Note: You should have GitHub freely available on your terminal</h2>
             <h2>Note: This is for Linux/MacOS</h2>
 
-            <p>Clone repository from GitHub</p>
-            <code>git clone https://www.github.com/jeffreyzhu604/accountability-buddy</code>
+            <p>Create a directory for main project and change into it</p>
+            <code>mkdir accountability-buddy && cd accountability-buddy</code>
 
-            <p>Open two terminal windows and change to project directory</p>
-            <code>cd accountability</code>
+            <p>Clone repository from GitHub for the frontend</p>
+            <code>git clone https://www.github.com/jeffreyzhu604/accountability-buddy-frontend</code>
 
-            <p>On the first window, change to frontend directory</p>
-            <code>cd frontend</code>
-            <p>Install dependencies</p>
-            <code>npm install</code>
+            <p>Clone repository from GitHub for the backend</p>
+            <code>git clone https://www.github.com/jeffreyzhu604/accountability-buddy-backend</code>
 
-            <p>On the first window, change to backend directory</p>
-            <code>cd backend</code>
-            <p>Install dependencies</p>
+            <p>Navigate the directory for the frontend</p>
+            <code>cd accountability-buddy-frontend</code>
+
+            <p>Open a second terminal window and navigate to the directory for the backend</p>
+            <code>cd accountability-buddy-backend</code>
+
+            <p>For both terminal windows, install dependencies</p>
             <code>npm install</code>
 
             <p>To start the frontend client, run</p>
             <code>npm start</code>
 
             <p>To start the backend server, run</p>
-            <code>npm start</code>
+            <code>npm run devstart</code>
 
             <h3>Voila! Hope you enjoy this!</h3>
         </div>

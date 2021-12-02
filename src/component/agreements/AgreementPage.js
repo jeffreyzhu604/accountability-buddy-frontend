@@ -5,12 +5,16 @@ import { SearchBar } from '../SearchBar';
 import { getAgreement } from '../../actions';
 
 export const AgreementPage = () => {
+    
     const dispatch = useDispatch(); 
 
+    // Get a list of agreements from the Redux store.
+    // Component re-renders if the state changes.
     const { agreements } = useSelector(state => ({
         agreements: state.agreementReducer.agreements
     }));
 
+    // Load initial agreements
     useEffect(() => {
         dispatch(getAgreement());
     }, []);
@@ -21,7 +25,6 @@ export const AgreementPage = () => {
             <h1>Agreements:</h1>
             <Link className="button-nav buttons" to="/create-agreement">Create Agreement</Link>
             <div className="card">
-                {console.log(agreements)}
                 {agreements.map(agreement => {
                     return (
                         <div className="user-list-description">

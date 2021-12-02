@@ -2,12 +2,16 @@ import React from 'react';
 import { User } from './User';
 import { useSelector } from 'react-redux';
 
-export const UserList = ({ users, selectedID }) => {
+export const UserList = ({ users }) => {
+
+    // Get the active user and current search from the Redux store.
+    // Component re-renders if any of the states change.
     const { activeUser, currentSearch } = useSelector(state => ({
         activeUser: state.loginReducer.activeUser,
         currentSearch: state.searchBarReducer.currentSearch
     }));
 
+    // Function to format date stored in MongoDB
     const trimDate = date => {
         const dateCutoffLength = 10;
         let result = "";
@@ -62,6 +66,7 @@ export const UserList = ({ users, selectedID }) => {
         return monthName + " " + day + ", " + year;
     }
 
+    // Generate the user list based off the search result.
     const generateList = () => {
         if (currentSearch === '') {
             return users.map(user => {
@@ -99,7 +104,6 @@ export const UserList = ({ users, selectedID }) => {
 
     return (
         <div>
-            {/*searchDataSubmission.length > 0 ? generateFilteredList() : generateList()*/}
             <div className="user-list">
                 <div className="cards">
                     {generateList()}

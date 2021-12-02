@@ -12,16 +12,6 @@ import { SourcesPage } from './SourcesPage';
 
 export const App = () => {
 
-  /*
-      SearchBar passes the results of the search to Home. Home
-      passes data to UserList. UserList renders the results.
-
-      Each User in UserList should be clickable to their profile.
-
-      
-  */
-
-
   return (
     <div className="wrapper">
         <NavigationBar />

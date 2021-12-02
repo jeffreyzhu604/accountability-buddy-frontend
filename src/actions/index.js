@@ -17,16 +17,29 @@ import {
 } from '../actions/types';
 import axios from 'axios';
 
+/*
+    NOTE: Express server hosted on: https://arcane-falls-63724.herokuapp.com/. For local development,
+    please use localhost on port 4000.
+
+    NOTE: This file contains all the action creators used to change the state of the Redux store.
+*/
+
+/**
+ * Action creator to set the state to indicate that something is being loaded.
+ */
 export const setLoading = () => {
     return {
         type: SET_LOADING
     };
 };
 
+/**
+ * Action creator to obtain user data once authenticated and authorized.
+ */
 export const login = credentials => async dispatch => {
     try {
         setLoading();
-        const loginInfo = await axios.post("https://arcane-falls-63724.herokuapp.com/login", credentials);
+        const loginInfo = await axios.post("http://localhost:4000/login", credentials);
         dispatch({
             type: LOG_IN,
             payload: {
@@ -34,10 +47,6 @@ export const login = credentials => async dispatch => {
                 friends: loginInfo.data.user.friends                
             }
         });
-        localStorage.setItem('activeUser', JSON.stringify({
-            _id: loginInfo.data.user._id,
-            friends: loginInfo.data.user.friends                
-        }));
     } catch (err) {
         dispatch({
             type: LOG_IN_ERROR,
@@ -46,14 +55,19 @@ export const login = credentials => async dispatch => {
     }
 };
 
+/**
+ * Action creator to log users out.
+ */
 export const logout = history => {
     history.push("/");
-    localStorage.clear();
     return {
         type: LOG_OUT
     };
 };
 
+/**
+ * Action creator update friends list if user adds or removes friends.
+ */
 export const updateFriends = (payload) => {
     return {
         type: UPDATE_FRIENDS,
@@ -61,9 +75,12 @@ export const updateFriends = (payload) => {
     };
 };
 
+/**
+ * Action creator to fetch all the users of the site.
+ */
 export const getUsers = () => async dispatch => {
     try {
-        const users = await axios.get("https://arcane-falls-63724.herokuapp.com/users/all");
+        const users = await axios.get("http://localhost:4000/users/all");
         dispatch({
             type: GET_USERS,
             payload: users.data
@@ -76,9 +93,12 @@ export const getUsers = () => async dispatch => {
     }
 };
 
+/**
+ * Action creator to add friends.
+ */
 export const addUser = friends => async dispatch => {
     try {
-        const updates = await axios.put("https://arcane-falls-63724.herokuapp.com/add-friend", {
+        const updates = await axios.put("http://localhost:4000/add-friend", {
             activeUser: friends.activeUser,
             _id: friends._id
         });
@@ -96,7 +116,6 @@ export const addUser = friends => async dispatch => {
             };
         });
         const activeUserUpdated = users.find(user => user._id === friends.activeUser._id);
-        console.log(activeUserUpdated);
         dispatch(updateFriends(users));
         dispatch({
             type: UPDATE_ACTIVE_USER,
@@ -110,9 +129,12 @@ export const addUser = friends => async dispatch => {
     }
 };
 
+/**
+ * Action creator to remove friends
+ */
 export const removeUser = friends => async dispatch => {
     try {
-        const updates = await axios.put("https://arcane-falls-63724.herokuapp.com/remove-friend", {
+        const updates = await axios.put("http://localhost:4000/remove-friend", {
             activeUser: friends.activeUser,
             _id: friends._id
         });
@@ -142,12 +164,13 @@ export const removeUser = friends => async dispatch => {
     }
 };
 
+/**
+ * Action creator to create an agreement.
+ */
 export const addAgreement = agreement => async dispatch => {
     try {
         setLoading();
-        console.log(agreement);
-        const agreementData = await axios.post("https://arcane-falls-63724.herokuapp.com/create-agreement", agreement);
-        console.log(agreementData.data);
+        const agreementData = await axios.post("http://localhost:4000/create-agreement", agreement);
         dispatch({
             type: CREATE_AGREEMENT,
             payload: agreementData.data
@@ -160,17 +183,22 @@ export const addAgreement = agreement => async dispatch => {
     }
 };
 
+/**
+ * Action creator to reset active agreement.
+ */
 export const resetActiveAgreement = () => {
     return {
         type: RESET_ACTIVE_AGREEMENT
     };
 };
 
+/**
+ * Action creator to fetch agreements
+ */
 export const getAgreement = () => async dispatch => {
     try {
         setLoading();
-        const agreements = await axios.get("https://arcane-falls-63724.herokuapp.com/agreement");
-        console.log(agreements.data);
+        const agreements = await axios.get("http://localhost:4000/agreement");
         dispatch({
             type: GET_AGREEMENT,
             payload: agreements.data
@@ -183,7 +211,10 @@ export const getAgreement = () => async dispatch => {
     }
 };
 
-export const newSearch = (searchInput) => {
+/**
+ * Action creator to create a search.
+ */
+export const newSearch = searchInput => {
     return {
         type: NEW_SEARCH,
         payload: searchInput

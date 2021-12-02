@@ -12,7 +12,8 @@ export const SourcesPage = () => {
             <a href="https://stackoverflow.com/questions/57444203/get-id-from-url-in-react-js"><h3>Getting ID from URL in React</h3></a>
             <a href="https://stackoverflow.com/questions/69795799/useeffect-dependency-cause-an-infinite-loop"><h3>useEffect dependency causing infinite loop</h3></a>
             <a href="https://stackoverflow.com/questions/63614183/react-router-dom-link-how-can-i-put-an-id-into-the-path-of-link"><h3>Adding ID to Link elements</h3></a>
-            
+            <a href="https://niruhan.medium.com/deploying-mern-fullstack-application-on-the-web-for-free-with-netlify-and-heroku-87d888012635"><h3>Deploying MERN app to Netlify and Heroku</h3></a>
+            <a href="https://sweetcode.io/deploying-express-node-js-backend-heroku/"><h3>Deploying Express server to Heroku</h3></a>
         </div>
     );
 };

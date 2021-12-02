@@ -5,23 +5,21 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addAgreement, resetActiveAgreement } from '../../actions';
+import { addAgreement } from '../../actions';
 
 export const AgreementForm = () => {
 
+    const history = useHistory();
+
+    const dispatch = useDispatch();
+
+    // Get the current active user, list of current users and loading state from Redux store.
+    // Component re-renders if any of these states change.
     const { activeUser, users, loading } = useSelector(state => ({
         activeUser: state.loginReducer.activeUser,
         users: state.userReducer.users,
         loading: state.agreementReducer.loading
     }));
-
-    /*
-        TO DO: 
-        - format of date: 2021-11-12
-    */
-    const history = useHistory();
-
-    const dispatch = useDispatch();
     
     const [formValue, setFormValue] = useState({
         endDate: "",
@@ -30,6 +28,7 @@ export const AgreementForm = () => {
         friend: ""
     });
 
+    // Update local state of each form element
     const handleChange = (e) => {
         setFormValue({
             ...formValue,
@@ -56,6 +55,7 @@ export const AgreementForm = () => {
                 description: "",
                 friend: ""
             });
+            // Redirect to agreements page after submitting the agreement
             if (!loading) {
                 console.log('not loading');
                 history.push("/agreement");
@@ -70,9 +70,7 @@ export const AgreementForm = () => {
             alert(`${friend} is not your friend`);
             return false;
         }
-        console.log(result._id, activeUser.friends)
         if (activeUser.friends.includes(result._id)) return true;
-        console.log('not friend')
         return false;
     }
 

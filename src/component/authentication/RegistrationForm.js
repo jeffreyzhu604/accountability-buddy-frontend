@@ -19,6 +19,7 @@ export const RegistrationForm = () => {
         username: ""
     });
 
+    // Update local state of each form element
     const handleChange = (e) => {
         setFormValue({
             ...formValue,
@@ -26,11 +27,13 @@ export const RegistrationForm = () => {
         });
     }
 
+    /*
+    NOTE: Express server hosted on: https://arcane-falls-63724.herokuapp.com/. For local development,
+    please use localhost on port 4000.
+    */
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('test reg form');
-        const registrationInfo = await axios.post("https://arcane-falls-63724.herokuapp.com/register", formValue);
-        console.log("Registered: ", registrationInfo);
+        const registrationInfo = await axios.post("http://localhost:4000/register", formValue);
         setFormValue({
             ...formValue,  
             firstName: "",
@@ -40,6 +43,7 @@ export const RegistrationForm = () => {
             profileMessage: "",
             username: ""
         });
+        // After registration, redirect to login page
         history.push("/login");
     }
 
