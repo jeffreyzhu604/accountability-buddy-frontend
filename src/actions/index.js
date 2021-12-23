@@ -32,7 +32,7 @@ export const setLoading = () => {
         type: SET_LOADING
     };
 };
-
+   
 /**
  * Action creator to obtain user data once authenticated and authorized.
  */
