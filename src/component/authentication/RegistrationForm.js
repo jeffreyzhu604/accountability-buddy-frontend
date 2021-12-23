@@ -33,7 +33,7 @@ export const RegistrationForm = () => {
     */
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const registrationInfo = await axios.post("http://localhost:4000/register", formValue);
+        const registrationInfo = await axios.post("https://arcane-falls-63724.herokuapp.com/register", formValue);
         setFormValue({
             ...formValue,  
             firstName: "",
